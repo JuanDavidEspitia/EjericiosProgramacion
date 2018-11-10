@@ -65,3 +65,4 @@ Ejercicios Code Signal:
 			   
 		return resultado= (max - min) + 1 - statues.length;
 	}
+	
