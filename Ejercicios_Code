@@ -1,0 +1,67 @@
+Ejercicios Code Signal:
+
+1. Ejercicio de la suma
+	int add(param1, param2)
+	{
+	int resultado=0:
+		return resultado=param1+param2; 
+	}
+	
+2. Dado un año, regrese el siglo en el que está
+	int centuryFromYear(int year)
+	 {
+	 return (int)((year - 1) / 100) + 1;
+	}
+3. Palabra palindroma
+	boolean checkPalindrome(String inputString) {
+		 int n = inputString.length();
+		for( int i = 0; i < n/2; i++ )
+			if (inputString.charAt(i) != inputString.charAt(n-i-1)) return false;
+		return true; 
+	}
+4. Multiplicacion de numeros adyacentes
+	int adjacentElementsProduct(int[] inputArray) {
+	  int max = Integer.MIN_VALUE;
+	  for(int i=0;i<inputArray.length-1;i++)
+	  {
+		if(inputArray[i]*inputArray[i+1]>max)
+		{
+		max = inputArray[i]*inputArray[i+1];
+		}
+	  }
+	return max;
+	}
+	
+5. Area del poligono find the area of a polygon for a given n
+	int shapeArea(int n) {
+		int area = 1;
+		while (n > 1) 
+		{
+			area += (n-1)*4;
+			n -=1;
+		}
+		return area;
+	}
+	
+	
+6. makeArrayConsecutive2(statues) estatuas faltantes
+	int makeArrayConsecutive2(int[] statues) 
+	{
+		int max=0;
+		int min=100;
+		int resultado=0;
+		for(int i=0; i < statues.length; i++)
+		{
+			if(statues[i]>max)
+			{
+				max = statues[i]; 
+			}
+			if(statues[i]<min)
+			{
+			   min=statues[i]; 
+			}
+			//return resultado= (max - statues.length) - 1;
+		}
+			   
+		return resultado= (max - min) + 1 - statues.length;
+	}
