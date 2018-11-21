@@ -13,10 +13,12 @@ Ejercicios Code Signal:
 	 return (int)((year - 1) / 100) + 1;
 	}
 3. Palabra palindroma
-	boolean checkPalindrome(String inputString) {
+	boolean checkPalindrome(String inputString) 
+	{
 		 int n = inputString.length();
 		for( int i = 0; i < n/2; i++ )
-			if (inputString.charAt(i) != inputString.charAt(n-i-1)) return false;
+			if (inputString.charAt(i) != inputString.charAt(n-i-1)) 
+				return false;
 		return true; 
 	}
 4. Multiplicacion de numeros adyacentes
@@ -33,7 +35,8 @@ Ejercicios Code Signal:
 	}
 	
 5. Area del poligono find the area of a polygon for a given n
-	int shapeArea(int n) {
+	int shapeArea(int n)
+	{
 		int area = 1;
 		while (n > 1) 
 		{
@@ -65,4 +68,180 @@ Ejercicios Code Signal:
 			   
 		return resultado= (max - min) + 1 - statues.length;
 	}
-	
+7. IncrementalSAXSource
+
+boolean almostIncreasingSequence(int[] sequence) 
+{
+    boolean increase = true;
+    List<Integer> list = new ArrayList<>();
+    for (int a :sequence ) 
+    {
+        list.add(a); 
+    }
+    System.out.println(list);
+    if(list.size()==1)
+    {
+        return false;
+    }
+    for (int i = 0;i < list.size()-1 ;i++ ) 
+    {
+        if (list.get(1)<=list.get(0)) 
+        {
+            list.remove(0);
+            break;    
+        }
+        if(list.get(i+1)<=list.get(i)) 
+        {
+            if (list.get(i+1)>list.get(i-1)) 
+            {
+                list.remove(i); 
+            }
+            else
+            {
+                list.remove(i+1);
+            }
+            break;
+        } 
+    }
+
+    for (int i =0;i<list.size()-1 ;i++ ) 
+    {
+        if (list.get(i+1)<list.get(i) || list.get(i+1)==list.get(i) ) 
+        {
+            increase = false;
+        }    
+    }
+    return increase;
+}
+
+--------------------------------------------------
+
+	static boolean almostIncreasingSequence(int[] sequence) {
+		boolean entra = false;
+		for (int i = 0; i < sequence.length; i++) {
+			for (int j = 0; j < sequence.length; j++) {
+				if (j == sequence.length - 1) {
+					entra = true;
+				}
+				if (j == i) {
+					continue;
+				}
+				if (j + 1 < sequence.length) {
+					if (j + 1 == i) {
+						if (j + 2 < sequence.length)
+							if (sequence[j] >= sequence[j + 2]) {
+								break;
+							}
+					} else if (sequence[j] >= sequence[j + 1]) {
+						break;
+					}
+				}
+			}
+		}
+
+		return entra;
+	}
+8. Suma de elementos de una matriz
+int matrixElementsSum(int[][] matrix) {
+		   int resultado=0;
+		     for (int i = 0; i < matrix[0].length; i++) 
+		     {
+		         for (int j = 0; j < matrix.length; j++) 
+		            {
+		               if(matrix[j][i]==0)
+		               {
+		                
+		                break;
+		               }
+		               resultado+= matrix[j][i];
+		            }
+		        
+		        }
+		   return resultado;
+		    
+		}
+9. Dado un conjunto de cadenas, devuelva otra matriz que contenga todas sus cadenas más largas
+
+String[] allLongestStrings(String[] inputArray)
+{
+   int maximo=0;
+   ArrayList<String> Array = new ArrayList<String>();
+   for(int i =0; i < inputArray.length; i++) 
+   {
+     maximo=Math.max(maximo,inputArray[i].length());
+     
+   }
+    for(int i =0; i < inputArray.length; i++) 
+    {
+       if(inputArray[i].length() == maximo)
+       {
+          Array.add(inputArray[i]);
+       }
+    }
+   String [] res = new String[Array.size()];
+   return Array.toArray(res);
+      
+}
+10. Dadas dos cadenas, encuentra el número de caracteres comunes entre ellas.
+int commonCharacterCount(String s1, String s2) 
+{
+    int contador=0;
+    int [] a1 = new int [26];
+    int [] a2 = new int [26];
+    
+    for(int i=0; i < s1.length(); i++)
+    {
+       a1[s1.charAt(i)-'a']++;
+    }
+    for(int i=0; i < s2.length(); i++)
+    {
+       a2[s2.charAt(i)-'a']++;
+    }
+    for(int i=0; i < 26; i++)
+    {
+       contador+=Math.min(a1[i],a2[i]);
+    }
+    
+    return contador;
+    
+}
+
+11. 
+
+public static boolean isLucky(int n) {
+	    String enteroString = Integer.toString(n);
+	    int resultado1=0;
+	    int resultado2=0;
+	    for(int i=0; i< enteroString.length()/2; i++)
+	    {
+	        resultado1+= Integer.parseInt(String.valueOf(enteroString.charAt(i)));
+	        resultado2+= Integer.parseInt(String.valueOf(enteroString.charAt(enteroString.length()-1-i)));
+	       
+	    }
+	    return resultado1==resultado2 ? true:false; 
+	}
+
+
+12. 
+Algunas personas están de pie en una fila en un parque. Hay árboles entre ellos que no se pueden mover.
+ Tu tarea es reorganizar a las personas por sus alturas en un orden no descendente sin mover los árboles. ¡La gente puede ser muy alta!
+If a[i] = -1, then the ith position is occupied by a tree. Otherwise a[i] is the height of a person standing in the ith position.
+
+int[] sortByHeight(int[] a) {
+	   ArrayList<Integer> aux= new ArrayList<>();
+	   for(int i=0 ; i < a.length ; i++){
+	   	  if(a[i]!= -1){
+	   	  	aux.add(a[i]);
+	   	  }
+	   }
+	   Collections.sort(aux);
+	   
+	   int j=0;
+	  for(int i=0; i < a.length; i++){
+	  	 if(a[i]!=-1){
+	  	 	a[i]=aux.get(j);
+	  	 	j++;
+	  	 }
+	  } 
+    return a;
+}
