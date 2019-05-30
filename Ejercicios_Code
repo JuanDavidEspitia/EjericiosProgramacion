@@ -271,5 +271,187 @@ public static int[][] multiplicación (int [][] A, int [][] B){
 	}
 }
 
+14. Calcular la media de una serie de números que se leen por teclado.
+
+Programa Java que lea por teclado 10 números enteros y los guarde en un array. A continuación calcula y muestra por separado la media de los valores positivos y la de los valores negativos.
+
+/*
+ * Programa que lea por teclado 10 números enteros y los guarde en un array.
+ * A continuación calcula y muestra la media de los valores positivos y la  de los valores negativos.
+ */
+
+import java.util.*;
+public class Media1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i;
+        int pos = 0, neg = 0; //contadores de los números positivos y negativos
+        int[] numeros = new int[10]; //array que contendrá los números leídos por teclado
+        double sumaPos = 0, sumaNeg = 0; //acumuladores para las sumas de positivos y negativos
+        
+        //lectura de datos y llenar el array
+        System.out.println("Lectura de los elementos del array: ");
+        for (i = 0; i < 10; i++) {
+            System.out.print("numeros[" + i + "]= ");
+            numeros[i]=sc.nextInt();
+        }
+
+        //recorrer el array para sumar por separado los números positivos 
+         // y los negativos  
+        for (i = 0; i < 10; i++) {
+            if (numeros[i] > 0){ //sumar positivos
+                sumaPos += numeros[i];
+                pos++;
+            } else if (numeros[i] < 0){ //sumar negativos
+                sumaNeg += numeros[i];
+                neg++;
+            }
+        }
+
+        //Calcular y mostrar las medias 
+        if (pos != 0) {
+            System.out.println("Media de los valores positivos: " + sumaPos / pos);
+        } else {
+            System.out.println("No ha introducido numeros positivos");
+        }
+        if (neg != 0) {
+            System.out.println("Media de los valores negativos: " + sumaNeg / neg);
+        } else {
+            System.out.println("No ha introducido numeros negativos");
+        }
+    }
+}
+
+
+
+15. Programa Java que lea 10 números enteros por teclado y los guarde en un array. Calcula y muestra la media de los números que estén en las posiciones pares del array.
+
+Considera la primera posición del array (posición 0) como par.
+
+/* 
+ * Leer 10 números enteros y guardarlos
+ * en un array. Calcular la media de los
+ * que estén en las posiciones pares.
+ */
+import java.util.*;
+
+public class Arrays1_2 {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int i;
+        int[] numeros = new int[10];
+        double media = 0;
+
+        //lectura de datos y llenar el array
+        System.out.println("Lectura de los elementos del array: ");
+        for (i = 0; i < 10; i++) {
+            System.out.print("numeros[" + i + "]= ");
+            numeros[i] = sc.nextInt();
+        }
+        
+        //Recorrer el array y calcular la media
+        for (i = 0; i < 10; i++) {
+            if (i % 2 == 0){ //si la posición actual es par
+                media = media + numeros[i]; //se suma el valor de esa posición 
+            }
+        }
+        //Calcular y mostrar la media
+        System.out.println("Media de los valores que se encuentran en posiciones pares: "+ media/5);
+    }
+}
+
+
+16. Mostrar las unidades de disco del sistema
+
+import java.io.File;
+public class EjercicioFileUnidades {
+    public static void main(String[] args) {
+        File [] unidades = File.listRoots();
+        System.out.printf("   %20s %20s %n" , "Tamaño Total", "Tamaño disponible");
+        for(File f : unidades){
+            System.out.print(f);
+            System.out.printf("%20s %20s %n", f.getTotalSpace(), f.getFreeSpace());
+        }
+    }
+}
+
+
+17. Contar el número de veces que aparece un carácter en un texto en Java
+
+
+/Programa que cuenta el número de palabras de un texto.
+import java.util.Scanner;
+import java.util.StringTokenizer;
+public class ContarPalabras {
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       String frase;
+       System.out.print("Introduce una frase: ");
+       frase = sc.nextLine();
+       StringTokenizer st = new StringTokenizer(frase);
+       System.out.println("Número de palabras: " + st.countTokens());
+    }
+}
+
+//Método que recibe un String y devuelve el número de palabras que contiene
+public static int contarPalabras(String s) {
+    int contador = 1, pos;
+    s = s.trim(); //eliminar los posibles espacios en blanco al principio y al final
+    if (s.isEmpty()) { //si la cadena está vacía
+        contador = 0;
+    } else {
+                pos = s.indexOf(" "); //se busca el primer espacio en blanco
+                while (pos != -1) { //mientras que se encuentre un espacio en blanco
+                           contador++; //se cuenta una palabra
+                           pos = s.indexOf(" ", pos + 1); //se busca el siguiente espacio en blanco
+                }                                               //a continuación del actual
+    }
+    return contador;
+}
+
+
+18. Eliminar la última palabra de un String en Java
+
+
+public static String eliminarUltimaPalabra(String s) {
+    int pos;
+    s = s.trim();
+    pos = s.lastIndexOf(" ");
+    if (pos != -1) {
+         s = s.substring(0, pos);
+    } else {
+         s = "";
+    }
+    return s;
+}
+
+// Un método main para probarlo podría ser este:
+
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    String texto;
+    do {
+           System.out.println("Introduce texto: ");
+           texto = sc.nextLine();
+     } while (texto.isEmpty());
+     texto = eliminarUltimaPalabra(texto);
+     System.out.println(texto);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
